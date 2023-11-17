@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://6wsd1ytu7tdg"]
+
+[ext_resource type="Script" path="res://scenes/entities/player/FALL.gd" id="1_4h6fv"]
+
+[node name="FALL" type="Node2D"]
+script = ExtResource("1_4h6fv")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

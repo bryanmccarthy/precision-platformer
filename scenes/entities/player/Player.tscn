@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6wj0jm6fqxo7"]
+
+[ext_resource type="Script" path="res://scenes/entities/player/Player.gd" id="1_jwocr"]
+[ext_resource type="Texture2D" uid="uid://cymcbt05p21oi" path="res://icon.svg" id="2_euvuf"]
+[ext_resource type="PackedScene" uid="uid://yxtb75plufb4" path="res://scenes/entities/player/IDLE.tscn" id="3_euc4m"]
+[ext_resource type="Script" path="res://scenes/entities/player/STATES.gd" id="3_gggxy"]
+[ext_resource type="PackedScene" uid="uid://crf4tkyihjkgf" path="res://scenes/entities/player/JUMP.tscn" id="4_0h36s"]
+[ext_resource type="PackedScene" uid="uid://dffq0gb618s7l" path="res://scenes/entities/player/MOVE.tscn" id="5_lixrv"]
+[ext_resource type="PackedScene" uid="uid://6wsd1ytu7tdg" path="res://scenes/entities/player/FALL.tscn" id="6_rvwbj"]
+[ext_resource type="PackedScene" uid="uid://ybauwa1tjrja" path="res://scenes/entities/player/DASH.tscn" id="8_gs2o1"]
+[ext_resource type="PackedScene" uid="uid://cyoawdhsqboqe" path="res://scenes/entities/player/SLIDE.tscn" id="9_kjelm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oq6mf"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_jwocr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oq6mf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.250001, 4.76837e-07)
+scale = Vector2(0.154, 0.15)
+texture = ExtResource("2_euvuf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="STATES" type="Node" parent="."]
+script = ExtResource("3_gggxy")
+
+[node name="IDLE" parent="STATES" instance=ExtResource("3_euc4m")]
+
+[node name="JUMP" parent="STATES" instance=ExtResource("4_0h36s")]
+
+[node name="MOVE" parent="STATES" instance=ExtResource("5_lixrv")]
+
+[node name="FALL" parent="STATES" instance=ExtResource("6_rvwbj")]
+
+[node name="DASH" parent="STATES" instance=ExtResource("8_gs2o1")]
+
+[node name="SLIDE" parent="STATES" instance=ExtResource("9_kjelm")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -29.0
+offset_right = 23.0
+offset_bottom = -3.0
+text = "STATE"
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="TopRight" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, -10)
+target_position = Vector2(13, 2.08165e-12)
+collision_mask = 2
+
+[node name="BottomRight" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 10)
+target_position = Vector2(13, 2.08165e-12)
+collision_mask = 2
+
+[node name="TopLeft" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, -10)
+target_position = Vector2(-13, 2.08165e-12)
+collision_mask = 2
+
+[node name="BottomLeft" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, 10)
+target_position = Vector2(-13, 2.08165e-12)
+collision_mask = 2
