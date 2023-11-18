@@ -74,8 +74,8 @@
 [ext_resource type="Texture2D" uid="uid://bjw2ykg0jwvf" path="res://assets/BlueWizard/2BlueWizardWalk/Chara_BlueWalk00019.png" id="48_utmcd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4uweg"]
-radius = 55.0
-height = 263.333
+radius = 187.5
+height = 1012.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y1kfm"]
 animations = [{
@@ -293,61 +293,77 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_jwocr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13.3333)
+position = Vector2(0, 12.5)
+scale = Vector2(0.4, 0.4)
 shape = SubResource("CapsuleShape2D_4uweg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.4, 0.4)
 zoom = Vector2(2, 2)
 
 [node name="STATES" type="Node" parent="."]
 script = ExtResource("3_gggxy")
 
 [node name="IDLE" parent="STATES" instance=ExtResource("3_euc4m")]
+scale = Vector2(0.4, 0.4)
 
 [node name="JUMP" parent="STATES" instance=ExtResource("4_0h36s")]
+scale = Vector2(0.4, 0.4)
 
 [node name="MOVE" parent="STATES" instance=ExtResource("5_lixrv")]
+scale = Vector2(0.4, 0.4)
 
 [node name="FALL" parent="STATES" instance=ExtResource("6_rvwbj")]
+scale = Vector2(0.4, 0.4)
 
 [node name="DASH" parent="STATES" instance=ExtResource("8_gs2o1")]
+scale = Vector2(0.4, 0.4)
 
 [node name="SLIDE" parent="STATES" instance=ExtResource("9_kjelm")]
+scale = Vector2(0.4, 0.4)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -24.0
 offset_top = -29.0
 offset_right = 23.0
 offset_bottom = -3.0
+scale = Vector2(0.4, 0.4)
 text = "STATE"
+metadata/_edit_use_anchors_ = true
 
 [node name="Raycasts" type="Node2D" parent="."]
+scale = Vector2(0.4, 0.4)
 
 [node name="TopRight" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -120)
-target_position = Vector2(70, 2.08165e-12)
+position = Vector2(175, -312.5)
+scale = Vector2(0.4, 0.4)
+target_position = Vector2(115, 0)
 collision_mask = 2
 
 [node name="BottomRight" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 145)
-target_position = Vector2(70, 2.08165e-12)
+position = Vector2(175, 375)
+scale = Vector2(0.4, 0.4)
+target_position = Vector2(115, 0)
 collision_mask = 2
 
 [node name="TopLeft" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -120)
-target_position = Vector2(-70, 2.08165e-12)
+position = Vector2(-181.25, -306.25)
+scale = Vector2(0.4, 0.4)
+target_position = Vector2(-115, 0)
 collision_mask = 2
 
 [node name="BottomLeft" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, 145)
-target_position = Vector2(-70, 2.08165e-12)
+position = Vector2(-175, 375)
+scale = Vector2(0.4, 0.4)
+target_position = Vector2(-115, 0)
 collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, -2.5)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_y1kfm")
 animation = &"walk"
