@@ -1,7 +1,7 @@
 extends "state.gd"
 
 var dash_direction = Vector2.ZERO
-var dash_speed = 240
+var dash_speed = 480
 var dashing = false
 
 @export var dash_duration = 0.2
@@ -9,6 +9,7 @@ var dashing = false
 
 func update(delta):
 	# Player.gravity(delta)
+	Player._animated_sprite.play("dash")
 	
 	if !dashing:
 		return STATES.FALL

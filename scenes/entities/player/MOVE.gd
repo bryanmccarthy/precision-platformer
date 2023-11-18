@@ -4,6 +4,7 @@ extends "state.gd"
 func update(delta):
 	Player.gravity(delta)
 	player_movement()
+	Player._animated_sprite.play("walk")
 	
 	if Player.velocity.x == 0:
 		return STATES.IDLE

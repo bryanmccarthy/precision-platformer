@@ -4,6 +4,7 @@ extends "state.gd"
 func update(delta):
 	Player.gravity(delta)
 	player_movement()
+	Player._animated_sprite.play("jump")
 	
 	if Player.velocity.y < 0:
 		return STATES.FALL

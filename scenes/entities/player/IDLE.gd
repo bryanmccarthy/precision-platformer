@@ -3,6 +3,7 @@ extends "state.gd"
 
 func update(delta):
 	Player.gravity(delta)
+	Player._animated_sprite.play("idle")
 	
 	if Player.movement_input.x != 0:
 		return STATES.MOVE

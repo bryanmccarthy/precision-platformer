@@ -11,8 +11,8 @@ var climb_input = false
 var dash_input = false
 
 # Player movement
-const SPEED = 100.0
-const JUMP_VELOCITY = -300.0
+const SPEED = 220.0
+const JUMP_VELOCITY = -320.0
 var last_direction = Vector2.RIGHT
 
 # Mechanics
@@ -25,6 +25,7 @@ var prev_state = null
 # Nodes
 @onready var STATES = $STATES
 @onready var Raycasts = $Raycasts
+@onready var _animated_sprite = $AnimatedSprite2D
 
 func _ready():
 	for state in STATES.get_children():
@@ -57,9 +58,11 @@ func player_input():
 	if Input.is_action_pressed("MoveLeft"):
 		movement_input.x -= 1
 		last_direction = Vector2.LEFT
+		_animated_sprite.flip_h = true
 	if Input.is_action_pressed("MoveRight"):
 		movement_input.x += 1
 		last_direction = Vector2.RIGHT
+		_animated_sprite.flip_h = false
 	if Input.is_action_pressed("MoveUp"):
 		movement_input.y -= 1
 	if Input.is_action_pressed("MoveDown"):

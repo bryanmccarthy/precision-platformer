@@ -5,6 +5,7 @@ extends "state.gd"
 
 func update(delta):
 	slide_movement(delta)
+	Player._animated_sprite.play("idle")
 	
 	if Player.get_next_to_wall() == null:
 		return STATES.FALL
